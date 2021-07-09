@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('auth')
+Route::middleware('auth', 'verified')
     ->get('/dashboard', function () {
         return view('dashboard');
     })
