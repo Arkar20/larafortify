@@ -1,28 +1,27 @@
 @extends('layouts.guest')
 
 @section('content')
-    <ul>
+@if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600">
+        {{ session('status') }}
+    </div>
+@endif
+  <ul>
     @foreach ($errors->all() as $error)
         <li>{{$error}}</li>
     @endforeach
 </ul>
-    <form action="/login" method="POST">
+    <form action="/forgot-password" method="POST">
         @csrf
         
         <div>
             <label>Email</label>
             <input type="email" name="email"/>
         </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password"/>
-        </div>
+        
        
         <div>
-            <button type="submit" >Register</button>
-        </div>
-        <div>
-            <a href="/forgot-password" >Forget password</a>
+            <button type="submit">Send Reset link</button>
         </div>
 
     </form>
